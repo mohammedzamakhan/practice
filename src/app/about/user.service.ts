@@ -13,8 +13,12 @@ export class UserService {
   repos;
   constructor(private http: HttpClient) {}
 
+  isInitialUser(username) {
+    return username.toLowerCase() === environment.user;
+  }
+
   getSavedUser(username) {
-    return username === environment.user && this.user;
+    return this.isInitialUser(username) && this.user;
   }
 
   getUser(username): Observable<any> {
@@ -26,7 +30,7 @@ export class UserService {
         `${environment.apiUrl}/${username}?client_id=${environment.clientId}&client_secret=${environment.clientSecret}`
       )
       .do((user: any) => {
-        if (user.login === environment.user) {
+        if (this.isInitialUser(username)) {
           this.user = user;
         }
       })
@@ -44,7 +48,7 @@ export class UserService {
         `https://api.github.com/users/${username}/repos?client_id=${environment.clientId}&client_secret=${environment.clientSecret}`
       )
       .do((repos: any) => {
-        if (username === environment.user) {
+        if (this.isInitialUser(username)) {
           this.repos = repos;
         }
       })
