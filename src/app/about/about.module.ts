@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { UserComponent } from '../user/user.component';
 import { ProgressComponent } from '../progress/progress.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReposComponent } from '../repos/repos.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { SharedModule } from '../shared/shared.module';
     AboutRoutingModule,
     SharedModule,
   ],
-  declarations: [AboutComponent, UserComponent],
+  declarations: [AboutComponent, UserComponent, ReposComponent],
   providers: [UserService]
 })
 export class AboutModule { }

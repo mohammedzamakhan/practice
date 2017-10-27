@@ -33,8 +33,8 @@ export class AboutComponent implements OnInit {
     this.searchStream.valueChanges
       .startWith(environment.user)
       .debounce(
-        () =>
-          this.userService.getSavedUser()
+        (value) =>
+          this.userService.getSavedUser(value)
             ? Observable.timer(0)
             : Observable.timer(500)
       )
@@ -59,13 +59,5 @@ export class AboutComponent implements OnInit {
           this.repos = user.repos;
         }
       });
-  }
-
-  public update() {
-    this.user['name'] = 'Random';
-  }
-
-  public searchUser(e): void {
-    this.userService.getUser(e.target.value).subscribe(console.log);
   }
 }

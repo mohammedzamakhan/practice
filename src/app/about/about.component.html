@@ -14,17 +14,8 @@
 
   <ng-template [ngIf]="!error" [ngIfElse]="template">
       <tk-user *ngIf="!error;else template" [user]="user"></tk-user>
-      <section class="mdc-theme--dark">
-          <ul class="mdc-list">
-              <li *ngFor="let repo of repos" class="mdc-list-item">
-                  <i class="mdc-list-item__start-detail material-icons" aria-hidden="true">folder</i>
-                  {{repo.name}}</li>
-            </ul>
-      </section>
+      <tk-repos [repos]="repos" [username]="user.login"></tk-repos>
   </ng-template>
-
-
-
 
   <ng-template #template>
     User Not found

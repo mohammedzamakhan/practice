@@ -16,6 +16,7 @@ body {
   text-decoration: none;
 }
 .demo-card__avatar {
+  position: absolute;
   background: #bdbdbd;
   height: 2.5rem;
   width: 2.5rem;
@@ -41,4 +42,9 @@ body {
 
 .mdc-theme--dark {
   background: #303030;
+}
+
+.demo-card--with-avatar .mdc-card__title,
+.demo-card--with-avatar .mdc-card__subtitle {
+  margin-left: 56px;
 }

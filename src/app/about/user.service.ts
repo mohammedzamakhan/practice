@@ -13,8 +13,8 @@ export class UserService {
   repos;
   constructor(private http: HttpClient) {}
 
-  getSavedUser() {
-    return this.user;
+  getSavedUser(username) {
+    return username === environment.user && this.user;
   }
 
   getUser(username): Observable<any> {
