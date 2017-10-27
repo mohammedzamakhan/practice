@@ -22,7 +22,7 @@ export class UserService {
   }
 
   getUser(username): Observable<any> {
-    if (username === environment.user && this.user) {
+    if (this.isInitialUser(username) && this.user) {
       return Observable.of(this.user);
     }
     return this.http
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   getRepos(username): Observable<any> {
-    if (username === environment.user && this.repos) {
+    if (this.isInitialUser(username) && this.repos) {
       return Observable.of(this.repos);
     }
     return this.http
