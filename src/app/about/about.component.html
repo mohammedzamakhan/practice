@@ -1,25 +1,32 @@
-<form name="search-form">
-  <div class="mdc-form-field mdc-form-field--align-end">
-    <div class="mdc-textfield">
-      <input type="text" class="mdc-textfield__input" name="search" placeholder="Type Github User Name" (input)="search$.next($event.target.value)">
-      <div class="mdc-textfield__bottom-line"></div>
+<tk-progress *ngIf="loading"></tk-progress>
+<div class="container">
+  <form name="search-form">
+    <div class="mdc-form-field mdc-form-field--align-end">
+      <div class="mdc-textfield username-field">
+        <input type="text" class="mdc-textfield__input" name="search" placeholder="Type Github User Name" [(ngModel)]="search" #searchStream="ngModel">
+
+        <div class="mdc-textfield__bottom-line"></div>
+      </div>
+      <label for="css-only-textfield">username:</label>
     </div>
-    <label for="css-only-textfield">username:</label>
-  </div>
-</form>
-<div *ngIf="!error">
-  <div class="mdc-card demo-card demo-card--with-avatar">
-    <section class="mdc-card__primary">
-      <img class="demo-card__avatar" [src]="user.avatar_url"/>
-      <h1 class="mdc-card__title">{{user.name}}</h1>
-      <h2 class="mdc-card__subtitle">{{user.login}}</h2>
-    </section>
-    <section class="mdc-card__media demo-card__16-9-media"></section>
-    <section class="mdc-card__supporting-text">
-      {{user.bio}}
-    </section>
-    <section class="mdc-card__actions">
-      <a href="{{user.html_url}}" target="_blank" class="mdc-button mdc-button--raised mdc-card__action">Link to profile</a>
-    </section>
-  </div>
+  </form>
+  <!-- <button (click)="update()">Update User</button> -->
+
+  <ng-template [ngIf]="!error" [ngIfElse]="template">
+      <tk-user *ngIf="!error;else template" [user]="user"></tk-user>
+      <section class="mdc-theme--dark">
+          <ul class="mdc-list">
+              <li *ngFor="let repo of repos" class="mdc-list-item">
+                  <i class="mdc-list-item__start-detail material-icons" aria-hidden="true">folder</i>
+                  {{repo.name}}</li>
+            </ul>
+      </section>
+  </ng-template>
+
+
+
+
+  <ng-template #template>
+    User Not found
+  </ng-template>
 </div>
