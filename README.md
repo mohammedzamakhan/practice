@@ -42,11 +42,9 @@
 </div>
 ```
 8) Get Slack Webhook API url, 
-* Go to https://api.slack.com/, and click 'Start Building'
-* Click `Create New App` and enter any valid App Name and select the Development Slack Workspace where you want the messages to appear
-* Click on Incoming Webhooks, and on Incoming Webhook page, toggle the Slide toggle to on
-* Click on `Add new Webhook to workspace`, and select where you want to post the messages, and click Autherize
-* Now copy the webhook url
+* Go to https://api.slack.com/incoming-webhooks and click on the link `incoming webhook integration`
+* Choose a channel (choose your username), and click on `add incoming webhook integration`
+* copy the webhook url
 
 9) Create Slack Service, right click on the shared folder and click `Generate Service...` and enter slack, and add this method
 ```javascript
