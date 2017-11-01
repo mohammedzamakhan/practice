@@ -1,4 +1,4 @@
-# Angualr Practice Exercise
+# Angualr Intermediate Concepts Practice Exercise
 
 1) Create a new module called feedback
        `ng g m feedback --routing`
